@@ -1,4 +1,4 @@
-package com.example.ga_mlsdiscovery.dagger2practice.di.modules;
+package com.example.ga_mlsdiscovery.dagger2practice.network.di_network;
 
 import com.example.ga_mlsdiscovery.dagger2practice.network.AuthenticationInterceptor;
 
