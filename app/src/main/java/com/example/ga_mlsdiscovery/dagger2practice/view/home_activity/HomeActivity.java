@@ -1,4 +1,4 @@
-package com.example.ga_mlsdiscovery.dagger2practice.view;
+package com.example.ga_mlsdiscovery.dagger2practice.view.home_activity;
 
 import android.Manifest;
 import android.content.pm.PackageManager;

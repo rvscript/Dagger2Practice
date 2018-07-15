@@ -3,12 +3,14 @@ package com.example.ga_mlsdiscovery.dagger2practice.application;
 import android.app.Application;
 
 import com.example.ga_mlsdiscovery.dagger2practice.BuildConfig;
+import com.example.ga_mlsdiscovery.dagger2practice.application.app_di.AppComponent;
+import com.example.ga_mlsdiscovery.dagger2practice.application.app_di.AppModule;
 import com.example.ga_mlsdiscovery.dagger2practice.di.components.DaggerHomeActivityComponent;
 import com.example.ga_mlsdiscovery.dagger2practice.di.components.DaggerInterceptorComponent;
-import com.example.ga_mlsdiscovery.dagger2practice.di.components.HomeActivityComponent;
-import com.example.ga_mlsdiscovery.dagger2practice.di.components.InterceptorComponent;
-import com.example.ga_mlsdiscovery.dagger2practice.di.modules.InterceptorModule;
-import com.example.ga_mlsdiscovery.dagger2practice.di.modules.RetrofitModule;
+import com.example.ga_mlsdiscovery.dagger2practice.view.home_activity.di_home_activity.HomeActivityComponent;
+import com.example.ga_mlsdiscovery.dagger2practice.network.di_network.InterceptorComponent;
+import com.example.ga_mlsdiscovery.dagger2practice.network.di_network.InterceptorModule;
+import com.example.ga_mlsdiscovery.dagger2practice.view.home_activity.di_home_activity.RetrofitModule;
 import com.example.ga_mlsdiscovery.dagger2practice.logging.FileLoggingTree;
 import com.example.ga_mlsdiscovery.dagger2practice.logging.ReleaseTree;
 

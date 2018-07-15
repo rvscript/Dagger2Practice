@@ -1,4 +1,6 @@
-package com.example.ga_mlsdiscovery.dagger2practice.application;
+package com.example.ga_mlsdiscovery.dagger2practice.application.app_di;
+
+import com.example.ga_mlsdiscovery.dagger2practice.application.Dagger2Application;
 
 import javax.inject.Singleton;
 

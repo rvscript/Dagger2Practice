@@ -1,4 +1,4 @@
-package com.example.ga_mlsdiscovery.dagger2practice.application;
+package com.example.ga_mlsdiscovery.dagger2practice.application.app_di;
 
 import android.content.Context;
 

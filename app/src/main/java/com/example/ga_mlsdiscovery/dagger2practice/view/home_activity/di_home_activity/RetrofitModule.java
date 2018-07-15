@@ -1,4 +1,4 @@
-package com.example.ga_mlsdiscovery.dagger2practice.di.modules;
+package com.example.ga_mlsdiscovery.dagger2practice.view.home_activity.di_home_activity;
 
 import com.example.ga_mlsdiscovery.dagger2practice.network.RetrofitService;
 import javax.inject.Singleton;
