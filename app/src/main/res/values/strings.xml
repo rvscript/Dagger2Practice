@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Dagger2Practice</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="et_hint">Enter Name</string>
+    <string name="bt_shared_prefs_save">SAVE</string>
+    <string name="tv_shared_prefs">SharedPrefs Text here</string>
 </resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".view.home_activity.home_fragment.SharePreferencesFragment">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        android:layout_margin="@dimen/margin_shared_prefs">
+        <Button
+            android:text="@string/bt_shared_prefs_save"
+            android:id="@+id/bt_shared_prefs"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:id="@+id/et_shared_prefs"
+            android:hint="@string/et_hint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_margin="@dimen/margin_textview"
+        android:textSize="18sp"
+        android:id="@+id/tv_shared_prefs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_shared_prefs" />
+
+</LinearLayout>

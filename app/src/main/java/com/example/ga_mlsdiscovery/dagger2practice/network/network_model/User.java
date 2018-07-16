@@ -1,4 +1,4 @@
-package com.example.ga_mlsdiscovery.dagger2practice.model;
+package com.example.ga_mlsdiscovery.dagger2practice.network.network_model;
 
 import com.google.gson.annotations.SerializedName;
 
