@@ -1,6 +1,6 @@
 package com.example.ga_mlsdiscovery.dagger2practice.network.endpoints;
 
-import com.example.ga_mlsdiscovery.dagger2practice.model.User;
+import com.example.ga_mlsdiscovery.dagger2practice.network.network_model.User;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,9 +14,10 @@ import android.widget.Toast;
 
 import com.example.ga_mlsdiscovery.dagger2practice.application.Dagger2Application;
 import com.example.ga_mlsdiscovery.dagger2practice.R;
-import com.example.ga_mlsdiscovery.dagger2practice.model.User;
+import com.example.ga_mlsdiscovery.dagger2practice.network.network_model.User;
 import com.example.ga_mlsdiscovery.dagger2practice.network.RetrofitService;
 import com.example.ga_mlsdiscovery.dagger2practice.network.endpoints.LoginService;
+import com.example.ga_mlsdiscovery.dagger2practice.view.home_activity.home_fragment.SharePreferencesFragment;
 
 import javax.inject.Inject;
 
@@ -23,22 +26,29 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import timber.log.Timber;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Inject
     RetrofitService retrofitService;
 
     private User user;
     private int id = -1;
+    private FragmentManager fragmentManager;
+    private Fragment fragment;
+    private Button btRetrofit, btFragment;
+    private Bundle bundle;
 
-    private Button btRetrofit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        bundle = savedInstanceState;
         btRetrofit = findViewById(R.id.button1);
         btRetrofit.setOnClickListener(this);
+        btFragment = findViewById(R.id.button2);
+        btFragment.setOnClickListener(this);
+        fragmentManager = getSupportFragmentManager();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             ActivityCompat.requestPermissions(HomeActivity.this,
@@ -72,9 +82,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 return;
             }
-
-            // other 'case' lines to check for other
-            // permissions this app might request
         }
     }
 
@@ -86,24 +93,41 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 String username = "rvscript";
 //Line to replace by dagger
                 //LoginService loginService = RetrofitService.createService(LoginService.class);
-                 LoginService loginService = retrofitService.createService(LoginService.class);
+                LoginService loginService = retrofitService.createService(LoginService.class);
                 Call<User> call = loginService.getUser(username);
                 call.enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
-                        if(response.isSuccessful()){
+                        if (response.isSuccessful()) {
                             user = response.body();
-                            Timber.d("onResponse: "+user.getId()+"\n"+ user.getAvatarUrl());
+                            Timber.d("onResponse: " + user.getId() + "\n" + user.getAvatarUrl());
+                            Toast.makeText(HomeActivity.this, "Check Log.d for response", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
-                        Timber.e( "onFailure: "+t.getMessage());
+                        Timber.e("onFailure: " + t.getMessage());
                     }
                 });
                 break;
-
+            case R.id.button2:
+                if (findViewById(R.id.fragment_container) != null) {
+                    if (bundle != null) {
+                        return;
+                    }
+                    createFragment();
+                }
+                break;
         }
+    }
+
+    void createFragment(){
+        fragment = new SharePreferencesFragment();
+        fragment.setArguments(getIntent().getExtras());
+            fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                .add(R.id.fragment_container, fragment)
+                .commit();
     }
 }
